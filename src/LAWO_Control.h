@@ -649,7 +649,7 @@ public:
     return i;
   }
 
-  void getPixMap(uint32_t dstMap[VIRTUAL_WIDTH]) {
+  void getPixelMap(uint32_t dstMap[VIRTUAL_WIDTH]) {
     memcpy(dstMap, PixelState, VIRTUAL_WIDTH);
   }
 
