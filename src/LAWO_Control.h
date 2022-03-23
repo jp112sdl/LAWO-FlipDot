@@ -408,6 +408,39 @@ public:
     }
     setFlipSpeed(s);
     drawPixel(col, row, currentState);
+    show();
+  }
+
+  void repairColumn(uint8_t col) {
+    uint16_t s = flipSpeedFactor;
+    setFlipSpeed(FS_SLOW);
+    bool currentState[MATRIX_HEIGHT];
+    for (uint8_t i = 0; i < MATRIX_HEIGHT; i++)
+      currentState[i]= getPixelState(col, i);
+
+
+    for (uint8_t i = 0; i < 20; i++) {
+      for (uint8_t j = 0; j < MATRIX_HEIGHT; j++)
+        drawPixel(col, j, YELLOW);
+      show();
+      delay(200);
+      for (uint8_t j = 0; j < MATRIX_HEIGHT; j++)
+      drawPixel(col, j, BLACK);
+      show();
+      delay(200);
+    }
+    setFlipSpeed(s);
+    for (uint8_t j = 0; j < MATRIX_HEIGHT; j++)
+      drawPixel(col, j, currentState[j]);
+    show();
+  }
+
+  void refreshAllPixel() {
+    uint32_t current[VIRTUAL_WIDTH];
+    memcpy(current, PixelState, VIRTUAL_WIDTH);
+    clear();
+    memcpy(NextPixelState, current, VIRTUAL_WIDTH);
+    show();
   }
 
   uint8_t printChar(uint8_t col_offset, uint8_t row_offset, uint8_t chr, bool state) {
