@@ -714,7 +714,7 @@ public:
     }
   }
 
-  void setPixelMap(const uint32_t srcMap[VIRTUAL_WIDTH]) {
+  void setPixelMap(const uint32_t * srcMap) {
     for (uint16_t c = 0; c < VIRTUAL_WIDTH; c++) {
       for (uint8_t r = 0; r < MATRIX_HEIGHT; r++) {
         bool newPixelState = bitRead(srcMap[c],r);
