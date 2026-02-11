@@ -19,6 +19,7 @@ typedef struct {
    } fontInfo_t;
 
 static fontType_t DefaultFont[] PROGMEM;
+static fontType_t DefaultFontCondensed[] PROGMEM;
 static fontType_t Font5x3[] PROGMEM;
 static fontType_t BigFont[] PROGMEM;
 static fontType_t BigFontCondensed[] PROGMEM;
